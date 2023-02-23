@@ -61,3 +61,11 @@
   font-size: 20px;
   color: red;
 }
+
+.productsContainer{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  gap: 20px;
+  justify-content: center;
+}
