@@ -1,22 +1,19 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+import Item from './Item';
 
-const ItemList = ({key, title, price,image}) => {
-
+const ItemList = ({prod}) => {
+  console.log(prod);
   return (
-    <div>
+   
+    <div className='productsContainer'>
 
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={image} />
-      <Card.Body>
-        <Card.Title>{key}</Card.Title>
-        <Card.Text>
-          {title}
-        </Card.Text>
-        <Button variant="primary">{price}</Button>
-      </Card.Body>
-    </Card>
+    {prod?.map((prod=>{
+      
+       return(<Item id={prod.id}  title ={prod.title} image={prod.image} desc={prod.description} price={prod.price}/>);
+    }))}
+
+   
 
     </div>
   )

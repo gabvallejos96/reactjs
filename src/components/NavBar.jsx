@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
+import { Link} from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -14,16 +15,26 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link>
+              <Link to={"/home"}>Home</Link>
+
+            </Nav.Link>
+            
+            <Nav.Link>
+              <Link to={"/cat"}>Products</Link>
+            </Nav.Link>
             <NavDropdown title="Categories" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Mouse</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Mouse Mats
+              <NavDropdown.Item>
+                <Link to={"/cat/men's clothing"}>Men's clothing</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Keyboards</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">
-              Headsets
+              <NavDropdown.Item>
+                <Link to={"/cat/electronics"}>Electronics</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to={"/cat/women's clothing"}>Women's clothing</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+              <Link to={"/cat/jewelery"}>Jewelery</Link>
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#cart"> <CartWidget/> </Nav.Link>

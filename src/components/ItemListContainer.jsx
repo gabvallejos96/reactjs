@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 
-const ItemListContainer = ({greeting}) => {
-  
+const ItemListContainer = () => {
+  const {category} = useParams();
   
   const url = "https://fakestoreapi.com/products";
  
@@ -21,28 +22,19 @@ const ItemListContainer = ({greeting}) => {
     getProducts().then((product) => setProduct(product));
   },[])
 
+  
+  const catFilter = product.filter((prod) => prod.category === category);
 
 
 
   return (
     <>
-    <h1>{greeting}</h1>
-
-    <div className='productsContainer'>
-
-    {product.map((prod)=>{
-      console.log(prod);
-      return (
-        <ItemList
-        key={prod.id}
-        title={prod.title}
-        price={prod.price}
-        image={prod.image}
-        />
-      );
-    })}
-
+    
+    <div>
+     {category? <ItemList prod={catFilter}/> : <ItemList prod={product}/>}
     </div>
+
+    
     
     </>
   )
